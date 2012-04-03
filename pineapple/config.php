@@ -22,8 +22,13 @@ if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 
 <?php
 if(isset($_POST[newSSID])){
+	if(isset($_POST[newSSIDPersistent])){
+		exec("echo \"$(sed 's/option ssid.*/option ssid ".$_POST[newSSID]."/g' /etc/config/wireless)\" > /etc/config/wireless");
+		echo "Changes to SSID have been made persistently<br />";
+	}
 exec("hostapd_cli -p /var/run/hostapd-phy0 karma_change_ssid \"".$_POST[newSSID]."\"");
 echo "Karma SSID changed to \"".$_POST[newSSID]."\" successfully <br /><br />";
+
 }
 
 if(isset($_POST[ssidBW])){
@@ -102,6 +107,7 @@ Karma configuration.
 <b>Change Karma SSID</b><br />
 <form action='<?php echo $_SERVER[php_self] ?>' method= 'post' >
 <input type="text" name="newSSID" size='25' value="New SSID" onFocus="if(this.value == 'New SSID') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'New SSID';}" size="70" style='font-family:courier;  font-weight:bold; background-color:black; color:gray; border-style:dotted;' >
+<br>Persistent?:<input type="checkbox" name="newSSIDPersistent">
 <br><input type='submit' value='Change SSID'>
 </form>
 </tr></td>
