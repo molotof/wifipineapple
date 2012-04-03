@@ -12,7 +12,7 @@ if (isset($_GET[generatekey])) {
 	}
 
 if (isset($_GET[connect])) {
-	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php") == "") {
+	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Starting SSH connection.</pre>";
 		exec("echo /www/pineapple/ssh/ssh-connect.sh | at now");
 		sleep(2);
@@ -22,7 +22,7 @@ if (isset($_GET[connect])) {
 }
 
 if (isset($_GET[disconnect])) {
-	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php") == "") {
+	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Process Snapshop reports no SSH sessions running. No session to disconnect.</pre>";
 	} else {
 		echo "<pre>Killing SSH session</pre>";

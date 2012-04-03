@@ -60,9 +60,9 @@ if (exec("grep 3g-keepalive.sh /etc/crontabs/root") == "") {
 echo "3G redial <font color='red'><b>disabled</b></font>. | <a href='3g.php?enablekeepalive&enable&goback'><b>Enable</b></a><br />";             
 } else { echo "3G redial <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='3g.php?disablekeepalive&goback'><b>Disable</b></a><br />"; } 
 
-if (exec("ps aux | grep [s]sh | grep -v -e ssh.php") == "") {                                                                                             
+if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {                                                                                             
 echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"red\"><b>offline</b></font>. &nbsp;| <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";        
-} else {                                                                                                                                                 
+} else {         
 echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"lime\"><b>online</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
 } 
 
