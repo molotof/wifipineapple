@@ -86,16 +86,17 @@ echo "<tr><td><font color=lime>".$moduleArray[0]." </td><td> ".$moduleArray[1]."
 <font color=red>Warning: This will establish a
 connection to wifipineapple.com</font>
 
+
 <?php
 if(isset($_GET[show])){
 $moduleListArray = explode("#", file_get_contents("http://wifipineapple.com/downloads.php?moduleList"));
 if($moduleListArray[0] != " "){
 echo "<table cellpadding=5px><tr>
-<tr><td>Module </td><td> Version </td></tr>";
+<tr><td>Module </td><td> Version </td><td>Author</td><td>Description</td></tr>";
 foreach($moduleListArray as $moduleArr){
 
 $nameVersion = explode("|", $moduleArr);
-echo "<tr><td><font color=lime>".$nameVersion[0]."</td><td>".$nameVersion[1]."</td><td><a href='modules.php?getModule=".$nameVersion[0]."&moduleVersion=".$nameVersion[1]."'>Install</a></td></tr><br />";
+echo "<tr><td><font color=lime>".$nameVersion[0]."</td><td>".$nameVersion[1]."</td><td>".$nameVersion[2]."</td><td>".$nameVersion[3]."</td><td><a href='modules.php?getModule=".$nameVersion[0]."&moduleVersion=".$nameVersion[1]."'>Install</a></td></tr><br />";
 
 }
 echo "</table>";
