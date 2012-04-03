@@ -39,10 +39,14 @@ if($_FILES[upgrade][error] > 0){
 elseif(isset($_FILES[upgrade]) && $_FILES[upgrade][name] != "upgrade.bin"){
 echo "The upgrade file must be named upgrade.bin";
 }
-else {
+elseif(isset($_FILES[upgrade])){
+exec("rm /tmp/upgrade.bin");
 move_uploaded_file($_FILES[upgrade][tmp_name], "/tmp/".$_FILES[upgrade][name]);
-exec('sysupgrade -n /tmp/upgrade.bin');
+if(exec("md5sum /tmp/upgrade.bin | grep -w ".$_POST[md5sum]) == ""){
+echo "Error, MD5Sum does not match!";
+}else exec('sysupgrade -n /tmp/upgrade.bin');
 }
+
 ?>
 <div align=right>
 <?php
@@ -78,6 +82,7 @@ Browse for an upgrade.bin and click upgrade:
 
 <form action="<?php $_SERVER[php_self] ?>" method="post" enctype="multipart/form-data">
 <input type="file" value="upgrade.bin" name="upgrade" id="upgrade" /><input type="submit" onclick="alert('Please note: If the upload is successful, the page will time out and give you an error. This is expected. Please wait patiently while the pineapple is working. It will reboot and be upgraded afterwards.');" value="Upgrade" name="Upgrade">
+MD5Sum: <input type="text" name="md5sum">
 </form>
 <font color='orange' >Upon clicking the Upgrade button, relax. It's going to be ok. <br />The error is expected. Give the Pineapple a few minutes to upgrade and reboot while you have a coconut cocktail.</font>
 
