@@ -3,7 +3,7 @@
 if(isset($_GET[getModule], $_GET[moduleVersion])){
 
 	exec("mkdir -p /tmp/modules");
-	exec("wget -O /tmp/modules/mk4-module-".$_GET[getModule]."-".$_GET[moduleVersion].".tar.gz \"http://www.d1171540.domain.com/downloads.php?downloadModule=".$_GET[getModule]."&moduleVersion=".$_GET[moduleVersion]."\"");
+	exec("wget -O /tmp/modules/mk4-module-".$_GET[getModule]."-".$_GET[moduleVersion].".tar.gz \"http://wifipineapple.com/downloads.php?downloadModule=".$_GET[getModule]."&moduleVersion=".$_GET[moduleVersion]."\"");
         $path = "/tmp/modules/mk4-module-".$_GET[getModule]."-".$_GET[moduleVersion].".tar.gz";
         $cmd = "tar -xzf ".$path." -C /tmp/modules/";
         exec($cmd);
@@ -88,7 +88,7 @@ connection to wifipineapple.com</font>
 
 <?php
 if(isset($_GET[show])){
-$moduleListArray = explode("#", file_get_contents("http://www.d1171540.domain.com/downloads.php?moduleList"));
+$moduleListArray = explode("#", file_get_contents("http://wifipineapple.com/downloads.php?moduleList"));
 if($moduleListArray[0] != " "){
 echo "<table cellpadding=5px><tr>
 <tr><td>Module </td><td> Version </td></tr>";
