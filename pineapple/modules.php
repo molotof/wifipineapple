@@ -96,8 +96,9 @@ echo "<table cellpadding=5px><tr>
 foreach($moduleListArray as $moduleArr){
 
 $nameVersion = explode("|", $moduleArr);
+if($nameVersion[0] != "\n" && $nameVersion[0] != ""){
 echo "<tr><td><font color=lime>".$nameVersion[0]."</td><td>".$nameVersion[1]."</td><td>".$nameVersion[2]."</td><td>".$nameVersion[3]."</td><td><a href='modules.php?getModule=".$nameVersion[0]."&moduleVersion=".$nameVersion[1]."'>Install</a></td></tr><br />";
-
+}
 }
 echo "</table>";
 }else{
