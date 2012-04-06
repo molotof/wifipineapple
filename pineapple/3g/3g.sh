@@ -56,7 +56,7 @@ case "$MODEM" in
 		iptables -A FORWARD -d 172.16.42.0/24 -m state --state ESTABLISHED,RELATED -i 3g-wan2 -j ACCEPT
 		
 		;;
-*1410:5031*)	echo "Novatel MC760 (Virgin Mobile) detected. Attempting mode switch"
+*1410:6002* | *1410:5031*) echo "Novatel MC760 (Virgin Mobile) detected. Attempting mode switch"
 		uci delete network.wan2
 		uci set network.wan2=interface
 		uci set network.wan2.ifname=ppp0
@@ -75,7 +75,7 @@ case "$MODEM" in
 		uci commit network
 		usb_modeswitch -v 1410 -p 5031 -V 1410 -P 6002 -M 5553424312345678000000000000061b000000020000000000000000000000 -n 1 -s 20
 		sleep 10; rmmod usbserial
-		sleep 3; insmod usbserial vendor=-x1410 product=0x6002
+		sleep 3; insmod usbserial vendor=0x1410 product=0x6002
 		sleep 5; /etc/init.d/firewall disable; /etc/init.d/firewall stop
 		logger "3G: firewall stopped"
 		iptables -t nat -A POSTROUTING -s 172.16.42.0/24 -o 3g-wan2 -j MASQUERADE
