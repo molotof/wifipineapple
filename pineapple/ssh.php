@@ -112,7 +112,7 @@ echo "SSH Persist is currently <font color='red'><b>disabled</b></font>. | <a hr
 // section currently disabled since autossh does a fine job of maintaining persistent connections. The ssh-keepalive.sh cron job isn't necessary.
 // 
 
-if (exec("ps aux | grep [s]sh | grep -v -e ssh.php") == "") {
+if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 	 echo "SSH session currently <font color=\"red\"><b>disconnected</b></font> | <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 } else {
 	echo "SSH session currently <font color=\"lime\"><b>connected</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
