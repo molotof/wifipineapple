@@ -12,7 +12,7 @@ if (isset($_GET[generatekey])) {
 	}
 
 if (isset($_GET[connect])) {
-	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+	if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Starting SSH connection.</pre>";
 		exec("echo /www/pineapple/ssh/ssh-connect.sh | at now");
 		sleep(2);
@@ -22,11 +22,11 @@ if (isset($_GET[connect])) {
 }
 
 if (isset($_GET[disconnect])) {
-	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+	if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Process Snapshop reports no SSH sessions running. No session to disconnect.</pre>";
 	} else {
 		echo "<pre>Killing SSH session</pre>";
-		exec("kill `ps aux | grep -v -e ssh.php | awk '/[s]sh/{print $1}'`");
+		exec("kill `/bin/busybox ps | grep -v -e ssh.php | awk '/[s]sh/{print $1}'`");
 		sleep(2);
 	}
 }
@@ -107,12 +107,12 @@ echo "SSH Persist is currently <font color='red'><b>disabled</b></font>. | <a hr
 } else { echo "SSH Persist is currently <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='ssh.php?disablekeepalive'><b>Disable</b></a><br />"; }
 
 
-// debug: echo "<font color='pink'>" . exec("ps aux | grep [s]sh | grep -v -e ssh.php") . "</font>";
+// debug: echo "<font color='pink'>" . exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php") . "</font>";
 // 
 // section currently disabled since autossh does a fine job of maintaining persistent connections. The ssh-keepalive.sh cron job isn't necessary.
 // 
 
-if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 	 echo "SSH session currently <font color=\"red\"><b>disconnected</b></font> | <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 } else {
 	echo "SSH session currently <font color=\"lime\"><b>connected</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
