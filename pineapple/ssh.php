@@ -153,9 +153,9 @@ echo "<b>Known Hosts:</b>
 <font color='green'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-</font>
 
 <b>On the local host (this pineapple)</b>
- - Generate an RSA key pair. The private key will be stored in /etc/dropbear id_rsa
+ - Generate an RSA key pair. The private key will be stored in /etc/dropbear/id_rsa
  - Note the RSA public key presented above. You'll need the from "ssh-rsa" to "root@Pineapple"     
- - Add the ssh-rsa key (not the public key above) to ~/.ssh/known_hosts      
+ - Add the Clients/attacker public ssh-rsa key (not the public key above) to ~/.ssh/known_hosts      
    - This is most easily accomplished by issuing 'ssh user@host' and pressing 'y' when prompted to save the key
    - This must be done interactively (via a shell on this device) as AutoSSH does not pass the '-y' option.
                                                               
