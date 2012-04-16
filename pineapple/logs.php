@@ -16,7 +16,7 @@ echo ("$outputline\n");}
 
 ?>
 <a name="bottom"></a>
-<a href="logs.php#bottom">Refresh</a>
+<a href="javascript:window.location.reload()">Refresh Log</a>
 </pre>
 </body>
 </html>
