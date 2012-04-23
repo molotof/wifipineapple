@@ -1,5 +1,5 @@
 <?php 
-$cronjobs = ( exec("ps -all | grep [c]ron"));
+$cronjobs = ( exec("/bin/busybox ps | grep [c]ron"));
 if(isset($_GET[start])){                     
 exec("/etc/init.d/cron enable");
 exec("/etc/init.d/cron start"); 

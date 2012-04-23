@@ -31,22 +31,22 @@ if ($autoKarma != ""){
 echo "Autostart  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"karma/autoKarmaStop.php\"><b>Stop</b></a><br />";
 } else { echo "Autostart  <font color=\"red\"><b>disabled</b></font>. | <a href=\"karma/autoKarmaStart.php\"><b>Start</b></a><br />"; }
 
-$cronjobs = ( exec("ps -all | grep [c]ron"));
+$cronjobs = ( exec("/bin/busybox ps | grep [c]ron"));
 if ($cronjobs != ""){
 echo "Cron Jobs <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"jobs.php?stop&goback\"><b>Stop</b></a><br />";
 } else { echo "Cron Jobs <font color=\"red\"><b>disabled</b></font>. | <a href=\"jobs.php?start&goback\"><b>Start</b></a> | <a href=\"jobs.php\"><b>Edit</b></a><br />"; }
 
-$isurlsnarfup = exec("ps auxww | grep urlsnarf.sh | grep -v -e grep");
+$isurlsnarfup = exec("/bin/busybox ps | grep urlsnarf.sh | grep -v -e grep");
 if ($isurlsnarfup != "") {
 echo "URL Snarf  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"urlsnarf/stopurlsnarf.php\"><b>Stop</b></a><br />";
 } else { echo "URL Snarf  <font color=\"red\"><b>disabled</b></font>. | <a href=\"urlsnarf/starturlsnarf.php\"><b>Start</b></a><br />"; }
 
-$isdnsspoofup = exec("ps auxww | grep dnsspoof.sh | grep -v -e grep");
+$isdnsspoofup = exec("/bin/busybox ps | grep dnsspoof.sh | grep -v -e grep");
 if ($isdnsspoofup != "") {
 echo "DNS Spoof  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"dnsspoof/stopdnsspoof.php\"><b>Stop</b></a><br />";
 } else { echo "DNS Spoof  <font color=\"red\"><b>disabled</b></font>. | <a href=\"dnsspoof/startdnsspoof.php\"><b>Start</b></a> | <a href=\"config.php#spoofhost\"><b>Edit</b></a><br/>"; }
 
-/*$isngrepup = exec("ps auxww | grep ngrep | grep -v -e \"grep ngrep\" | awk '{print $1}'");
+/*$isngrepup = exec("/bin/busybox ps | grep ngrep | grep -v -e \"grep ngrep\" | awk '{print $1}'");
 if ($isngrepup != "") {
 echo "&nbsp;&nbsp;&nbsp;&nbsp;ngrep  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"ngrep/stopngrep.php\"><b>Stop</b></a>";
 } else { echo "&nbsp;&nbsp;&nbsp;&nbsp;ngrep  <font color=\"red\"><b>disabled</b></font>. | <a href=\"ngrep/startngrep.php\"><b>Start</b></a> | <a href=\"config.php#ngrep\"><b>Edit</b></a><br/>"; }
@@ -60,7 +60,7 @@ if (exec("grep 3g-keepalive.sh /etc/crontabs/root") == "") {
 echo "3G redial <font color='red'><b>disabled</b></font>. | <a href='3g.php?enablekeepalive&enable&goback'><b>Enable</b></a><br />";             
 } else { echo "3G redial <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='3g.php?disablekeepalive&goback'><b>Disable</b></a><br />"; } 
 
-if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {                                                                                             
+if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {                                                                                             
 echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"red\"><b>offline</b></font>. &nbsp;| <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";        
 } else {         
 echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"lime\"><b>online</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
