@@ -5,12 +5,12 @@
 <script type="text/javascript" src="includes/ajax.js"> </script>
 <script type="text/javascript" src="logtail/logtail.js"> </script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green" onload="getLog('start');">
 
 <?php require('includes/navbar.php'); ?>
+<body onLoad="getLog('start');">
 <pre>
 
-<table border="0" width="100%"><tr><td valign="top" align="left" width="350">
+<table border="0" width="100%"><tr><td valign="top" align="left" width="350" nowrap>
 <b>Services</b><br />
 <?php
 
@@ -81,12 +81,13 @@ if (isset($_GET[revealpublic])) {
 
 ?>
 
-</td><td valign="top" align="left" width="*">
+</td>
+<td valign="top" align="left" width="*" class="wrap">
 
 
 
 <pre>
-<a href="#" onclick="getLog('start');return false"><b>Resume Log</b></a> | <a href="#" onclick="stopTail();return false"><b>Pause Log</b></a> | <?php if (isset($_GET[report])) { echo "<a href='index.php'><b>Dismiss Detailed Report</b></a>"; } else { echo "<a href='index.php?report'><b>Generate Detailed Report</b></a>"; } ?><br />
+<a href="#" onClick="getLog('start');return false"><b>Resume Log</b></a> | <a href="#" onClick="stopTail();return false"><b>Pause Log</b></a> | <?php if (isset($_GET[report])) { echo "<a href='index.php'><b>Dismiss Detailed Report</b></a>"; } else { echo "<a href='index.php?report'><b>Generate Detailed Report</b></a>"; } ?><br />
 
 <?php
 if (isset($_GET[report])) {

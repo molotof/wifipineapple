@@ -17,7 +17,7 @@ if(isset($_GET[goback])){ header('Location: index.php'); } ?>
 <title>Pineapple Control Center</title>
 <script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 <pre>

@@ -21,7 +21,7 @@ echo '<meta http-equiv="refresh" content="0;url=?webUpgrade">';
 <title>Pineapple Control Center</title>
 <script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 <pre>
@@ -84,7 +84,7 @@ connection to wifipineapple.com
 Browse for an upgrade.bin and click upgrade:
 
 <form action="<?php $_SERVER[php_self] ?>" method="post" enctype="multipart/form-data">
-<input type="file" value="upgrade.bin" name="upgrade" id="upgrade" /><input type="submit" onclick="alert('Please note: If the upload is successful, the page will time out and give you an error. This is expected. Please wait patiently while the pineapple is working. It will reboot and be upgraded afterwards.');" value="Upgrade" name="Upgrade">
+<input type="file" value="upgrade.bin" name="upgrade" id="upgrade" /><input type="submit" onClick="alert('Please note: If the upload is successful, the page will time out and give you an error. This is expected. Please wait patiently while the pineapple is working. It will reboot and be upgraded afterwards.');" value="Upgrade" name="Upgrade">
 MD5Sum: <input type="text" name="md5sum">
 </form>
 <font color='orange' >Upon clicking the Upgrade button, relax. It's going to be ok. <br />The error is expected. Give the Pineapple a few minutes to upgrade and reboot while you have a coconut cocktail.</font>

@@ -1,0 +1,28 @@
+body{
+	background-color:#000;
+	color:#FFF;
+}
+a{
+	color:green;
+}
+table.nav{
+	width:100%
+}
+.nav{
+	background-color:green;
+	color:#000;
+	a:visited:black;
+	font-weight:bold;
+	border: 0;
+	border-spacing: 2px;
+	white-space:normal;
+	word-wrap:break-word;
+	font-family:"Courier New", Courier, monospace;
+	font-size:10pt;
+}
+a.nav a:visited.nav{
+	color:black;
+}
+a:hover.nav{
+	color:#FFF;
+]

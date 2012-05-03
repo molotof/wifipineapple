@@ -46,7 +46,7 @@ if(isset($_GET[getModule], $_GET[moduleVersion])){
 <title>Pineapple Control Center</title>
 <script  type="text/javascript" src="jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 <pre>
