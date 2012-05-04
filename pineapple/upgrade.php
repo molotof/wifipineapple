@@ -5,17 +5,17 @@
 ##Wait for this to be integrated for auto OTA
 ##Start upgrade
 if(isset($_GET[webDownload]) && trim(file_get_contents('webUpgrade.status')) == "idle"){
-exec("echo downloading > webUpgrade.status");
-exec("rm /tmp/upgrade.bin");
-exec("echo 'sh webUpgrade.sh' | at now");
+	exec("echo downloading > webUpgrade.status");
+	exec("rm /tmp/upgrade.bin");
+	exec("echo 'sh webUpgrade.sh' | at now");
 }
 ##Reload to check for finished download
 if(isset($_GET[webDownload]) && trim(file_get_contents('webUpgrade.status')) == "downloading"){
-echo '<meta http-equiv="refresh" content="5">';
+	echo '<meta http-equiv="refresh" content="5">';
 }
 ##if finished 
 if(isset($_GET[webDownload]) && trim(file_get_contents('webUpgrade.status')) == "doneDownloading"){
-echo '<meta http-equiv="refresh" content="0;url=?webUpgrade">';
+	echo '<meta http-equiv="refresh" content="0;url=?webUpgrade">';
 }
 ?>
 <title>Pineapple Control Center</title>
@@ -27,7 +27,7 @@ echo '<meta http-equiv="refresh" content="0;url=?webUpgrade">';
 <pre>
 <?php
 if(isset($_GET[webDownload])){
-echo '<center>Downloading...<br />Please be patient, this page will<br />reload automatically.</center>';
+	echo '<center>Downloading...<br />Please be patient, this page will<br />reload automatically.</center>';
 }
 ?>
 <?php
@@ -37,13 +37,13 @@ if($_FILES[upgrade][error] > 0){
 	echo "Error ($error), please check the file you specified.";
 }
 elseif(isset($_FILES[upgrade]) && $_FILES[upgrade][name] != "upgrade.bin"){
-echo "The upgrade file must be named upgrade.bin";
+	echo "The upgrade file must be named upgrade.bin";
 }
 elseif(isset($_FILES[upgrade])){
-exec("rm /tmp/upgrade.bin");
-move_uploaded_file($_FILES[upgrade][tmp_name], "/tmp/".$_FILES[upgrade][name]);
+	exec("rm /tmp/upgrade.bin");
+	move_uploaded_file($_FILES[upgrade][tmp_name], "/tmp/".$_FILES[upgrade][name]);
 if(exec("md5sum /tmp/upgrade.bin | grep -w ".$_POST[md5sum]) == ""){
-echo "Error, MD5Sum does not match!";
+	echo "Error, MD5Sum does not match!";
 }else exec('sysupgrade -n /tmp/upgrade.bin');
 }
 
@@ -77,7 +77,7 @@ echo "<br />MD5: ".$remoteMD5."<br />";
 
 Online Upgrade | <a href="<?php echo $_SERVER[PHP_SELF] ?>?checkUpgrade">Check</a>
 
-<font color=red>Warning:</font> This will establish a 
+<disabled>Warning:</disabled> This will establish a 
 connection to wifipineapple.com
 </div>
 <center>The current firmware version is: <?php include('includes/fwversion'); ?>
@@ -94,7 +94,7 @@ Please wait patiently.
 
 <pre>
 
-<b><font color='red'>Warning:</font></b>
+<disabled>Warning:</disabled>
 Power cycle the WiFi Pineapple and disable Karma, SSH, 3G and other non-essential services before flashing.
 Under most circumstances a firmware flash is perfectly safe, however please be advised:
  - Bootloader recovery options can only be accessed via serial. 

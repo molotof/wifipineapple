@@ -69,12 +69,16 @@ if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 
 
 if ($auto3g != ""){
-echo "3G on boot is currently <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"3g.php?disable&disablekeepalive\"><b>Disable</b></a><br />";
-} else { echo "3G on boot is currently <font color=\"red\"><b>disabled</b></font>. | <a href=\"3g.php?enable\"><b>Enable</b></a><br />"; }
+	echo "3G on boot is currently <enabled>enabled</enabled>.&nbsp; | <a href=\"3g.php?disable&disablekeepalive\"><b>Disable</b></a><br />";
+}else{
+	echo "3G on boot is currently <disabled>disabled</disabled>. | <a href=\"3g.php?enable\"><b>Enable</b></a><br />";
+}
 
 if (exec("grep 3g-keepalive.sh /etc/crontabs/root") == "") {
-echo "Keep Alive is currently <font color='red'><b>disabled</b></font>. | <a href='3g.php?enablekeepalive&enable'><b>Enable</b></a><br />";
-} else { echo "Keep Alive is currently <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='3g.php?disablekeepalive'><b>Disable</b></a><br />"; }
+	echo "Keep Alive is currently <disabled>disabled</disabled>. | <a href='3g.php?enablekeepalive&enable'><b>Enable</b></a><br />";
+}else{
+	echo "Keep Alive is currently <enabled>enabled</enabled>.&nbsp; | <a href='3g.php?disablekeepalive'><b>Disable</b></a><br />";
+	}
 
 echo "<br /><a href=\"3g.php?force\"><b>Force</b></a> connection now. This executes the below 3G script now, potentially saving a reboot. <font color='orange'><small>Experimental</small></font><br /><br />";
 
@@ -92,7 +96,7 @@ $filename = "/www/pineapple/3g/3g.sh";
   fclose($fh);
  echo "<b>Mobile Broadband Configuration:</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='140' rows='20' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/www/pineapple/3g/3g.sh'>
 <br><input type='submit' value='Update 3G script'>
 </form>";

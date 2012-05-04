@@ -34,8 +34,8 @@ if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 
 
 if ($cronjobs != ""){
-echo "Cron Jobs are currently <font color=\"lime\"><b>enabled</b></font>. | <a href=\"jobs.php?stop\"><b>Disable</b></a><br />";
-} else { echo "Cron Jobs <font color=\"red\"><b>disabled</b></font>. | <a href=\"jobs.php?start\"><b>Enable</b></a><br />"; }
+echo "Cron Jobs are currently <enabled>enabled</enabled>. | <a href=\"jobs.php?stop\"><b>Disable</b></a><br />";
+} else { echo "Cron Jobs <disabled>disabled</disabled>. | <a href=\"jobs.php?start\"><b>Enable</b></a><br />"; }
 
 
 ?>
@@ -52,7 +52,7 @@ $filename = "/etc/crontabs/root";
   fclose($fh);
  echo "<b>Cron Jobs:</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='80' rows='20' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' configBox='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/etc/crontabs/root'>
 <br><input type='submit' value='Update Crontab'>
 </form>";
@@ -89,7 +89,7 @@ $filename = "/etc/rc.local";
       fclose($fh);
        echo "<b>Execute on Boot:</b>
        <form action='$_SERVER[php_self]' method= 'post' >
-       <textarea name='newdata' cols='80' rows='20' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+       <textarea name='newdata' class='configBox'>$data</textarea>
        <input type='hidden' name='filename' value='/etc/rc.local'>
        <br><input type='submit' value='Update rc.local'>
        </form>";

@@ -24,22 +24,9 @@ Sebastian Kinne and affiliates claim no responsability for
 unauthorized use. <font color="darkred"><b>Please Hack Responsibly.</b></font>
 
 Support and Updates at <a href="http://www.wifipineapple.com">WiFiPineapple.com</a>
-<table border="0"><tr><td align="left" valign="top"><pre><b>
-<font color="white">
-                    \ 
-                  \  \
-                \  \  \</font><font color="green">
-<,  .v ,  // </font><font color="white">) ) )  )  )</font><font color="green">
- \\; \// //     </font><font color="white">/  /  /</font><font color="green">
-  ;\\|||//;       </font><font color="white">/  /</font><font color="yellow">
- ,'<\/><\/`         </font><font color="white">/</font><font color="yellow">
-,.`X/\><\\>` 
-;>/>><\\><\/`
-|<\\>>X/<>/\|
-`<\/><\/><\\;
- '/\<>/\<>/'
-   `<\/><;`</font><font color="white">wifi_pineapple</font>
-</b></pre></td></tr></table>
+<table border="0"><tr><td align="left" valign="top"><pre>
+<?php require("includes/ascii Pineapple.php"); ?>
+</pre></td></tr></table>
 </pre>
 </body>
 </html>

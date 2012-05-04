@@ -100,11 +100,15 @@ if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 
 
 if ($sshonboot != ""){
-echo "SSH on boot is currently <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"ssh.php?disable&disablekeepalive\"><b>Disable</b></a><br />";
-} else { echo "SSH on boot is currently <font color=\"red\"><b>disabled</b></font>. | <a href=\"ssh.php?enable\"><b>Enable</b></a><br />"; }
+	echo "SSH on boot is currently <enabled>enabled</enabled>.&nbsp; | <a href=\"ssh.php?disable&disablekeepalive\"><b>Disable</b></a><br />";
+}else{
+	echo "SSH on boot is currently <font color=\"red\"><b>disabled</b></font>. | <a href=\"ssh.php?enable\"><b>Enable</b></a><br />";
+}
 if (exec("grep ssh-keepalive.sh /etc/crontabs/root") == "") {
-echo "SSH Persist is currently <font color='red'><b>disabled</b></font>. | <a href='ssh.php?enablekeepalive&enable'><b>Enable</b></a><br />";
-} else { echo "SSH Persist is currently <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='ssh.php?disablekeepalive'><b>Disable</b></a><br />"; }
+	echo "SSH Persist is currently <disabled>disabled</disabled>. | <a href='ssh.php?enablekeepalive&enable'><b>Enable</b></a><br />";
+}else{
+	echo "SSH Persist is currently <enabled>enabled</enabled>.&nbsp; | <a href='ssh.php?disablekeepalive'><b>Disable</b></a><br />";
+}
 
 
 // debug: echo "<font color='pink'>" . exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php") . "</font>";
@@ -113,9 +117,9 @@ echo "SSH Persist is currently <font color='red'><b>disabled</b></font>. | <a hr
 // 
 
 if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
-	 echo "SSH session currently <font color=\"red\"><b>disconnected</b></font> | <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
+	 echo "SSH session currently <disabled>disconnected</disabled> | <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 } else {
-	echo "SSH session currently <font color=\"lime\"><b>connected</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
+	echo "SSH session currently <enabled>connected</enabled>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
 }
 
 
@@ -124,11 +128,11 @@ $filename = "/www/pineapple/ssh/ssh-connect.sh";
   $data = fread($fh, filesize($filename)) or die("Could not read file!");
   fclose($fh);
  echo "<b>SSH Connection Command:</b><form action='$_SERVER[php_self]' method= 'post' ><input type='hidden' name='filename' value='/www/pineapple/ssh/ssh-connect.sh'>
-<input type='text' name='newdata' size='85' style='font-family:courier; font-weight:bold; background-color:black; color:white; border-style:dotted;' value='$data' /><input type='submit' value='Save'></form>";
+<input type='text' name='newdata' class='long' value='$data' /><input type='submit' value='Save'></form>";
 
 
 echo "<br /><b>Public Key:</b> &nbsp; &nbsp; <font color='gray'><small>This usually goes in %h/.ssh/authorized_keys on the remote host</small></font><br /><br />";
-	echo "<textarea rows='7' cols='89' style='background-color:black; color:white; border-style:dashed;'>";
+	echo "<textarea class='configBox'>";
 	$cmd="dropbearkey -f /etc/dropbear/id_rsa -y";
 	exec ($cmd, $output);
 	foreach($output as $outputline) {
@@ -144,7 +148,7 @@ $data = fread($fh, filesize($filename)) or die("Could not read file!");
 fclose($fh);
 echo "<b>Known Hosts:</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='90' rows='8' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/root/.ssh/known_hosts'>
 <input type='submit' value='Update Known Hosts'>
 </form>";

@@ -53,8 +53,7 @@ if(isset($_GET[getModule], $_GET[moduleVersion], $_GET[destination])){
 <body>
 
 <?php require('includes/navbar.php'); ?>
-<pre>
-<?php
+<pre><?php
 
 if(isset($_GET[remove]) && $_GET[remove] != ""){
 exec("rm -rf modules/".$_GET[remove]);
@@ -66,8 +65,7 @@ exec($cmd);
 echo "removed ".$_GET[remove];
 }
 
-?>
-<center>
+?><center>
 <font color="yellow"><b>Pineapple Bar</b></font>
 Come get some infusions for your pineapple cocktail
 </center>
