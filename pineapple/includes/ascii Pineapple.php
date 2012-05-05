@@ -1,8 +1,3 @@
-<style type="text/css">
-	white {color:white}
-	green {color:green}
-	yellow{color:yellow}
-</style>
 <b><white>
                                 \
                               \  \

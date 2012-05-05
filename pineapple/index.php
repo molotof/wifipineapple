@@ -83,9 +83,9 @@
 				}
 				
 				if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
-					echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"red\"><b>offline</b></font>. &nbsp;| <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
+					echo "&nbsp; &nbsp; &nbsp; SSH <disabled>offline</disabled>. &nbsp;| <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 				} else {
-					echo "&nbsp; &nbsp; &nbsp; SSH <font color=\"lime\"><b>online</b></font>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
+					echo "&nbsp; &nbsp; &nbsp; SSH <enabled>online</enabled>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
 				}
 			?>
 			</servicesList>

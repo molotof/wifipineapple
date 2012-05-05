@@ -9,7 +9,7 @@
 <pre>
 
 <center>
-<font color="yellow"><b>WiFi Pineapple Mark IV</b></font>
+<yellow><b>WiFi Pineapple Mark IV</b></yellow>
 Firmware version: <?php echo exec("cat /www/pineapple/includes/fwversion"); ?><br\>
 
 The WiFi Pineapple is brought to you by the Jasager Team:

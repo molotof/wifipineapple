@@ -234,7 +234,7 @@ Spoofhost file used by DNSSPoof. Specifies new destination IP for source Domain.
 <tr><td>
 
 <a name='spoofhost'><b>Landing Page (phishing)</b>
-    <form action='$_SERVER[php_self]' method= 'post' >
+    <form action='<?php $_SERVER[php_self] ?>' method= 'post' >
     	<textarea class='configBox'><?php
 			$filename = "/www/index.php";
 			$fh = fopen($filename, "r") or die("Could not open file!");

@@ -1,4 +1,10 @@
-<link href="/pineapple/includes/main.css" rel="stylesheet" type="text/css" />
+<?php
+if(isset($_GET[css]) && file_exists("/www/pineapple/includes/".$_GET[css].".css")){
+	exec("echo ".$_GET[css]." > /www/pineapple/includes/css");
+}
+$css = exec("cat '/www/pineapple/includes/css'");
+echo "<link href='/pineapple/includes/".$css.".css' rel='stylesheet' type='text/css' />";
+?>
 <table class="nav" >
 	<tr class="nav">
 		<td class="nav">
