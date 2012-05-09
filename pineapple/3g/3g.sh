@@ -9,6 +9,7 @@
 # Novatel MC760 (Virgin) -dkitchen
 # Novatel MC760 (Ting) -dkitchen
 # Sierra 598u (Ting) -brianzimm
+# Huawei E398 (?) -brianzimm
 # 
 # Updated: wifipineapple.com
 # ---------------------------------------------------------
@@ -131,6 +132,28 @@ case "$MODEM" in
                 usb_modeswitch -v 1199 -p 0025
                 sleep 10; rmmod usbserial
                 sleep 3; insmod usbserial vendor=0x1199 product=0x0025
+                sleep 5; /etc/init.d/firewall disable; /etc/init.d/firewall stop
+                logger "3G: firewall stopped"
+                iptables -t nat -A POSTROUTING -s 172.16.42.0/24 -o 3g-wan2 -j MASQUERADE
+                iptables -A FORWARD -s 172.16.42.0/24 -o 3g-wan2 -j ACCEPT 
+                iptables -A FORWARD -d 172.16.42.0/24 -m state --state ESTABLISHED,RELATED -i 3g-wan2 -j ACCEPT
+
+                ;;
+*12d1:1506*)    echo "Huawei E398 detected. Attempting mode switch"
+                uci delete network.wan2         
+                uci set network.wan2=interface  
+                uci set network.wan2.ifname=ppp0           
+                uci set network.wan2.proto=3g           
+                uci set network.wan2.service=umts       
+                uci set network.wan2.device=/dev/ttyUSB0     
+                uci set network.wan2.apn=<<CHANGE HERE YOUR APN>>
+                uci set network.wan2.username=<<CHANGE HERE YOUR USERNAME>>     
+                uci set network.wan2.password=<<CHANGE HERE YOUR PASSWORD>>
+                uci set network.wan2.defaultroute=1    
+                uci commit network 
+                usb_modeswitch -v 12d1 -p 1506
+                sleep 10; rmmod usbserial
+                sleep 3; insmod usbserial vendor=0x12d1 product=0x1506
                 sleep 5; /etc/init.d/firewall disable; /etc/init.d/firewall stop
                 logger "3G: firewall stopped"
                 iptables -t nat -A POSTROUTING -s 172.16.42.0/24 -o 3g-wan2 -j MASQUERADE
