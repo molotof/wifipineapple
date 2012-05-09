@@ -27,20 +27,7 @@ echo ("$outputline\n");}
 
 
 
-<font color="white">
-                    \               
-                  \  \          
-                \  \  \</font><font color="green">              
-<,  .v ,  // </font><font color="white">) ) )  )  )</font><font color="green">                  
- \\; \// //     </font><font color="white">/  /  /</font><font color="green">                          
-  ;\\|||//;       </font><font color="white">/  /</font><font color="yellow">
- ,'<\/><\/`         </font><font color="white">/</font><font color="yellow">                    
-,.`X/\><\\>`                      
-;>/>><\\><\/`                        
-|<\\>>X/<>/\|
-`<\/><\/><\\;                            
- '/\<>/\<>/'                       
-   `<\/><;`</font><font color="white">wifi_pineapple</font>
+<?php require('../includes/ascii.php'); ?>
 
 </pre>
 </td></tr></table>

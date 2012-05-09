@@ -12,7 +12,7 @@ if (isset($_GET[generatekey])) {
 	}
 
 if (isset($_GET[connect])) {
-	if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Starting SSH connection.</pre>";
 		exec("echo /www/pineapple/ssh/ssh-connect.sh | at now");
 		sleep(2);
@@ -22,11 +22,11 @@ if (isset($_GET[connect])) {
 }
 
 if (isset($_GET[disconnect])) {
-	if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+	if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 		echo "<pre>Process Snapshop reports no SSH sessions running. No session to disconnect.</pre>";
 	} else {
 		echo "<pre>Killing SSH session</pre>";
-		exec("kill `/bin/busybox ps | grep -v -e ssh.php | awk '/[s]sh/{print $1}'`");
+		exec("kill `ps aux | grep -v -e ssh.php | awk '/[s]sh/{print $1}'`");
 		sleep(2);
 	}
 }
@@ -111,12 +111,12 @@ if (exec("grep ssh-keepalive.sh /etc/crontabs/root") == "") {
 }
 
 
-// debug: echo "<font color='pink'>" . exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php") . "</font>";
+// debug: echo "<font color='pink'>" . exec("ps aux | grep [s]sh | grep -v -e ssh.php") . "</font>";
 // 
 // section currently disabled since autossh does a fine job of maintaining persistent connections. The ssh-keepalive.sh cron job isn't necessary.
 // 
 
-if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 	 echo "SSH session currently <disabled>disconnected</disabled> | <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 } else {
 	echo "SSH session currently <enabled>connected</enabled>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
@@ -159,7 +159,7 @@ echo "<b>Known Hosts:</b>
 <b>On the local host (this pineapple)</b>
  - Generate an RSA key pair. The private key will be stored in /etc/dropbear/id_rsa
  - Note the RSA public key presented above. You'll need the from "ssh-rsa" to "root@Pineapple"     
- - Add the Clients/attacker public ssh-rsa key (not the public key above) to ~/.ssh/known_hosts      
+ - Add the Clients ssh-rsa public key (not the public key above) to ~/.ssh/known_hosts      
    - This is most easily accomplished by issuing 'ssh user@host' and pressing 'y' when prompted to save the key
    - This must be done interactively (via a shell on this device) as AutoSSH does not pass the '-y' option.
                                                               

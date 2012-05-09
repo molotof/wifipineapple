@@ -1,8 +1,8 @@
 <?php
 exec ("echo '' > /www/pineapple/logs/urlsnarf.log");
-exec ("kill `/bin/busybox ps | grep \"urlsnarf.sh\" | grep -v -e grep | awk '{print $1}'`");
+exec ("kill `ps auxww | grep \"urlsnarf.sh\" | grep -v -e grep | awk '{print $1}'`");
 exec ("killall update-urlsnarf.sh");
-exec ("kill `/bin/busybox ps | grep \"urlsnarf -i br-lan\" | grep -v -e grep | awk '{print $1}'`");
+exec ("kill `ps auxww | grep \"urlsnarf -i br-lan\" | grep -v -e grep | awk '{print $1}'`");
 ?>
 <html><head>
 <meta http-equiv="refresh" content="0; url=/pineapple/">

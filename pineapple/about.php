@@ -13,13 +13,13 @@
 Firmware version: <?php echo exec("cat /www/pineapple/includes/fwversion"); ?><br\>
 
 The WiFi Pineapple is brought to you by the Jasager Team:
-<a href="http://www.digininja.org"><font color="lime">Robin Wood</font></a>, <a href="http://hak5.org"><font color="lime">Darren Kitchen</font></a>,  <a href="mailto:sebkinne@gmail.com"><font color="lime">Sebastian Kinne</font></a>, <a href="http://www.room362.com"><font color="lime">Rob Fuller</font></a>, and our <a href="http://www.wifipineapple.com/forums/"><font color="lime">hacktastic community</font></a>
+<a href="http://www.digininja.org"><enabled>Robin Wood</enabled></a>, <a href="http://hak5.org"><enabled>Darren Kitchen</enabled></a>,  <a href="mailto:sebkinne@gmail.com"><enabled>Sebastian Kinne</enabled></a>, <a href="http://www.room362.com"><enabled>Rob Fuller</enabled></a>, and our <a href="http://www.wifipineapple.com/forums/"><enabled>hacktastic community</enabled></a>
 Open source software is distributed under the GNU <a href="http://www.gnu.org/licenses/gpl.html">General Public License</a>
 
 WiFi Pineapple is a wireless penetration testing tool
 for use in authorized security audits where permitted.
 Check laws and obtain client permission before using.
-Hak5, LLC., Darren Kiitchen, Robin Wood, Rob Fuller, 
+Hak5, LLC., Darren Kitchen, Robin Wood, Rob Fuller, 
 Sebastian Kinne and affiliates claim no responsability for
 unauthorized use. <font color="darkred"><b>Please Hack Responsibly.</b></font>
 

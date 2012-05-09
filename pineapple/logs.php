@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<?php require('includes/navbar.php');?>
+<?php require('includes/navbar.php'); ?>
 <pre>
 <?php
 

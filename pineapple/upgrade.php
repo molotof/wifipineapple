@@ -51,23 +51,23 @@ if(exec("md5sum /tmp/upgrade.bin | grep -w ".$_POST[md5sum]) == ""){
 <div align=right>
 <?php
 if(isset($_GET[checkUpgrade])){
-$remoteFile = explode("|", trim(file_get_contents("http://wifipineapple.com/downloads.php?currentVersion")));
+$remoteFile = explode("|", trim(file_get_contents("http://cloud.wifipineapple.com/mk4/downloads.php?currentVersion")));
 $remoteMD5 = $remoteFile[1];
 $remoteVersion = explode(".", $remoteFile[0]);
 $localVersion = explode(".", file_get_contents("includes/fwversion"));
 
 if($remoteVersion[0] > $localVersion[0]){
-echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://www.wifipineapple.com/downloads.php?download\">Download</a>";
+echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://cloud.wifipineapple.com/mk4/downloads.php?download\">Download</a>";
 echo "<br />MD5: ".$remoteMD5."<br />";
 }else if($remoteVersion[0] == $localVersion[0]){
 //Go further
 	if($remoteVersion[1] > $localVersion[1]){
-		echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://www.wifipineapple.com/downloads.php?download\">Download</a>";
+		echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://cloud.wifipineapple.com/mk4/downloads.php?download\">Download</a>";
 		echo "<br />MD5: ".$remoteMD5."<br />";
 	}elseif($remoteVersion[1] == $localVersion[1]){
 		//Go further
 		if($remoteVersion[2] > $localVersion[2]){
-			echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://www.wifipineapple.com/downloads.php?download\">Download</a>";
+			echo "Update ($remoteVersion[0].$remoteVersion[1].$remoteVersion[2]) found | <a href=\"http://cloud.wifipineapple.com/mk4/downloads.php?download\">Download</a>";
 			echo "<br />MD5: ".$remoteMD5."<br />";
 		}else echo "No upgrade found.";
 	}else echo "No upgrade found.";

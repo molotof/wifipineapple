@@ -12,7 +12,7 @@
 <?php
 	$filename =$_POST['filename'];
 	$newdata = $_POST['newdata'];
-	
+
 	if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 		$fw = fopen($filename, 'w') or die('Could not open file!');
 		$fb = fwrite($fw,stripslashes($newdata)) or die('Could not write to file');
@@ -89,7 +89,7 @@ Reset button
 ?>
 <br /><br />
 <a name='wpsScript'><b>Custom script executed on WPS button press</b></a>
-	<form action='<?php //'$_SERVER[php_self]'?>'  method= 'post' >
+	<form action='<?php $_SERVER[php_self] ?>'  method= 'post' >
 	<textarea name='newdata' class="configBox"><?php
             $filename = "/www/pineapple/config/wpsScript.sh";
             $fh = fopen($filename, "r") or die("Could not open file!");
@@ -226,7 +226,6 @@ ngrep configuration. Like grep, but for the network.
     	<br>
     	<input type='submit' value='Update Spoofhost'>
 </form>
-
 
 </td><td valign="top" align="left">
 Spoofhost file used by DNSSPoof. Specifies new destination IP for source Domain. May contain wildcards such as *.example.com.

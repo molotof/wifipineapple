@@ -35,7 +35,7 @@ $cmd = "
 	lsusb; 
 	
 	echo '\n<b>Processes</b>\n'; 
-	/bin/busybox ps;";
+	ps;";
 	
 exec ($cmd, $output);
 foreach($output as $outputline) {

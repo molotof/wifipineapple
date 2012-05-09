@@ -12,17 +12,17 @@
 
 <table border="0" width="100%">
 	<tr>
-    	<td class="status" nowrap>
-        
+		<td class="status" nowrap>
+
 			<b>Services</b><br />
 			<servicesList>
 				<?php
-			
+
 				$iswlanup = exec("ifconfig wlan0 | grep UP | awk '{print $1}'");
 				if ($iswlanup == "UP") {
 					echo "&nbsp;Wireless  <enabled>enabled</enabled>.<br />";
 				} else {
-					echo "&nbsp;Wireless  <disabled>disabled</disabled>.<br />";
+					echo "&nbsp;Wireless  <disabled>disabled</disabled> | <a href=\"wlan.php?start\"><b>Start</b></a><br />";
 				}
 
 				if ( exec("hostapd_cli -p /var/run/hostapd-phy0 karma_get_state | tail -1") == "ENABLED" ){
@@ -42,21 +42,21 @@
 					echo "Autostart  <disabled>disabled</disabled>. | <a href=\"karma/autoKarmaStart.php\"><b>Start</b></a><br />";
 				}
 
-				$cronjobs = ( exec("/bin/busybox ps | grep [c]ron"));
+				$cronjobs = ( exec("ps -all | grep [c]ron"));
 				if ($cronjobs != ""){
 					echo "Cron Jobs <enabled>enabled</enabled>.&nbsp; | <a href=\"jobs.php?stop&goback\"><b>Stop</b></a><br />";
 				} else {
 					echo "Cron Jobs <disabled>disabled</disabled>. | <a href=\"jobs.php?start&goback\"><b>Start</b></a> | <a href=\"jobs.php\"><b>Edit</b></a><br />";
 				}
 
-				$isurlsnarfup = exec("/bin/busybox ps | grep urlsnarf.sh | grep -v -e grep");
+				$isurlsnarfup = exec("ps auxww | grep urlsnarf.sh | grep -v -e grep");
 				if ($isurlsnarfup != "") {
 					echo "URL Snarf  <enabled>enabled</enabled>.&nbsp; | <a href=\"urlsnarf/stopurlsnarf.php\"><b>Stop</b></a><br />";
 				} else {
 					echo "URL Snarf  <disabled>disabled</disabled>. | <a href=\"urlsnarf/starturlsnarf.php\"><b>Start</b></a><br />";
 				}
 
-				$isdnsspoofup = exec("/bin/busybox ps | grep dnsspoof.sh | grep -v -e grep");
+				$isdnsspoofup = exec("ps auxww| grep dnsspoof.sh | grep -v -e grep");
 				if ($isdnsspoofup != "") {
 					echo "DNS Spoof  <enabled>enabled</enabled>.&nbsp; | <a href=\"dnsspoof/stopdnsspoof.php\"><b>Stop</b></a><br />";
 				} else {
@@ -82,7 +82,7 @@
 					echo "3G redial <font color='lime'><b>enabled</b></font>.&nbsp; | <a href='3g.php?disablekeepalive&goback'><b>Disable</b></a><br />";
 				}
 				
-				if (exec("/bin/busybox ps | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
+				if (exec("ps aux | grep [s]sh | grep -v -e ssh.php | grep -v grep") == "") {
 					echo "&nbsp; &nbsp; &nbsp; SSH <disabled>offline</disabled>. &nbsp;| <a href=\"ssh.php?connect\"><b>Connect</b></a><br /><br />";
 				} else {
 					echo "&nbsp; &nbsp; &nbsp; SSH <enabled>online</enabled>. &nbsp; | <a href=\"ssh.php?disconnect\"><b>Disconnect</b></a><br /><br />";
@@ -97,12 +97,12 @@
 				echo "&nbsp;WAN / LAN Port: " . exec("ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'") . "<br />";
 				echo "Public Internet: "; 
 				if (isset($_GET[revealpublic])) {
-					echo exec("wget -q -O - checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'") . "<br />";
+					echo exec("wget -qO- http://cloud.wifipineapple.com/ip.php") . "<br />";
 				} else {
 					echo "<a href=\"index.php?revealpublic\">reveal public ip</a><br />";
 				}
 			?>
-			
+
 		</td>
 		<td class="statusLogs">
 			<pre>
@@ -120,7 +120,7 @@
 						echo "<div id='log'>Karma Log:</div>";
 					}
 				?>
-				
+
 			</pre>
 		</td>
 	</tr>
