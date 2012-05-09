@@ -1,9 +1,9 @@
 <html>
 <head>
 <title>Pineapple Control Center</title>
-<script  type="text/javascript" src="jquery.min.js"></script>
+<script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 
@@ -27,7 +27,7 @@ $filename = "/www/pineapple/scripts/cleanup.sh";
   fclose($fh);
  echo "<b>Clean-Up Script</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='100' rows='14' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/www/pineapple/scripts/cleanup.sh'><input type='submit' value='Update Clean-Up Script'>
 </form>";
 
@@ -37,7 +37,7 @@ $filename = "/www/pineapple/ssh/ssh-keepalive.sh";
   fclose($fh);
  echo "<b>SSH Keep Alive Script</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='100' rows='14' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/www/pineapple/ssh/ssh-keepalive.sh'><input type='submit' value='Update SSH Keep Alive Script'>
 </form>"; 
 
@@ -47,7 +47,7 @@ $filename = "/www/pineapple/3g/3g-keepalive.sh";
   fclose($fh);
  echo "<b>3G Keep Alive Script</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='100' rows='14' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/www/pineapple/3g/3g-keepalive.sh'><input type='submit' value='Update 3G Keep Alive Script'>
 </form>"; 
 
@@ -57,7 +57,7 @@ $filename = "/www/pineapple/scripts/user.sh";
   fclose($fh);
  echo "<b>User Script</b>
 <form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='100' rows='14' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
+<textarea name='newdata' class='configBox'>$data</textarea>
 <input type='hidden' name='filename' value='/www/pineapple/scripts/user.sh'><input type='submit' value='Update User Script'>
 </form>"; 
 

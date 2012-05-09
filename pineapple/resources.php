@@ -9,9 +9,9 @@ if(isset($_GET[drop_caches])) {
 <html>
 <head>
 <title>Pineapple Control Center</title>
-<script  type="text/javascript" src="jquery.min.js"></script>
+<script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 
@@ -35,7 +35,7 @@ $cmd = "
 	lsusb; 
 	
 	echo '\n<b>Processes</b>\n'; 
-	/bin/busybox ps;";
+	ps;";
 	
 exec ($cmd, $output);
 foreach($output as $outputline) {

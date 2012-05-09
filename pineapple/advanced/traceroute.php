@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Pineapple Control Center</title>
-<script  type="text/javascript" src="jquery.min.js"></script>
+<script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
 <body bgcolor="black" text="white" alink="green" vlink="green" link="green">
 
@@ -27,20 +27,7 @@ echo ("$outputline\n");}
 
 
 
-<font color="white">
-                    \               
-                  \  \          
-                \  \  \</font><font color="green">              
-<,  .v ,  // </font><font color="white">) ) )  )  )</font><font color="green">                  
- \\; \// //     </font><font color="white">/  /  /</font><font color="green">                          
-  ;\\|||//;       </font><font color="white">/  /</font><font color="yellow">
- ,'<\/><\/`         </font><font color="white">/</font><font color="yellow">                    
-,.`X/\><\\>`                      
-;>/>><\\><\/`                        
-|<\\>>X/<>/\|
-`<\/><\/><\\;                            
- '/\<>/\<>/'                       
-   `<\/><;`</font><font color="white">wifi_pineapple</font>
+<?php require('../includes/ascii.php'); ?>
 
 </pre>
 </td></tr></table>

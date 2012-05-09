@@ -1,5 +1,5 @@
 <?php
-#exec ("kill `/bin/busybox ps | grep spoofhost | grep -v -e grep | awk '{print $1}'`");
+#exec ("kill `ps auxww | grep spoofhost | grep -v -e grep | awk '{print $1}'`");
 exec("killall dnsspoof");
 ?>
 <html><head>

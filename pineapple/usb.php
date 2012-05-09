@@ -3,7 +3,7 @@
 <title>Pineapple Control Center</title>
 <script  type="text/javascript" src="includes/jquery.min.js"></script>
 </head>
-<body bgcolor="black" text="white" alink="green" vlink="green" link="green">
+<body>
 
 <?php require('includes/navbar.php'); ?>
 <pre>
@@ -30,26 +30,27 @@ echo("$line <br />");
 <pre>
 
 <table border="0" width="100%" >
-<tr><td width="700">
-<br /> <br />
-<tr><td>
-
-<?php
-$filename = "/etc/config/fstab";
-  $fh = fopen($filename, "r") or die("Could not open file!");
-  $data = fread($fh, filesize($filename)) or die("Could not read file!");
-  fclose($fh);
- echo "<b>Fstab</b>
-<form action='$_SERVER[php_self]' method= 'post' >
-<textarea name='newdata' cols='80' rows='20' style='background-color:black; color:white; border-style:dashed;'>$data</textarea>
-<input type='hidden' name='filename' value='/etc/config/fstab'>
-<br><input type='submit' value='Update Fstab'>
-</form>";
-?>
-</td><td valign="top" align="left">
-Fstab Configuration. 
-</td></tr>
-<tr><td>
+<td width="700">
+	<?php
+		$filename = "/etc/config/fstab";
+		$fh = fopen($filename, "r") or die("Could not open FsTab!");
+		$data = fread($fh, filesize($filename)) or die("FsTab!");
+		fclose($fh);
+	?>
+	<b>Fstab</b>
+	<form action='<?php $_SERVER[php_self] ?>' method= 'post' >
+	<textarea name='newdata' class='configBox'>
+    <?php echo $data?>
+	</textarea>
+	<input type='hidden' name='filename' value='/etc/config/fstab'>
+	<br><input type='submit' value='Update Fstab'>
+	</form>
+    
+</td>
+<td valign="top" align="left">
+	Fstab Configuration.
+</td>
+</table>
 
 </pre>
 </body>

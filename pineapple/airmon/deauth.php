@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Pineapple Control Center</title>
-<script  type="text/javascript" src="jquery.min.js"></script>
+<script  type="text/javascript" src="/includes/jquery.min.js"></script>
 </head>
 <body bgcolor="black" text="white" alink="green" vlink="green" link="green">
 
